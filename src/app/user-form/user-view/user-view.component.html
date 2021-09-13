@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="card" *ngIf="userDetails">
+    <div class="card-body">
+      <h5 class="card-title">{{ userDetails.id}}. {{ userDetails.name}}</h5>
+      <p>{{ userDetails.email }} <br>
+        {{ userDetails.phone }} <br>
+        {{ userDetails.address.street }}, {{ userDetails.address.city }} {{ userDetails.address.zipcode }}
+      </p>
+    </div>
+  </div>
+  <br>
+  <div>
+    <button class="btn btn-secondary" routerLink="/users">Back</button>
+  </div>
+</div>
+

@@ -1,0 +1,25 @@
+<table class="table" id="table-id">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i=index">
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+      <td>
+        <button class="btn btn-primary" [routerLink]="['/users/view/',user.id]">View</button>
+        <button class="btn btn-success"  (click)="editUserList(user)">Update</button>
+        <button class="btn btn-danger" (click)="openConfirmationDialog(user.id)">Delete</button>
+    </td>
+
+    </tr>
+  </tbody>
+</table>

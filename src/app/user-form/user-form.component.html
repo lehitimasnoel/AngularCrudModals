@@ -1,0 +1,67 @@
+<div class="container">
+  <form [formGroup]="usersForm" (ngSubmit)="OnSubmit()">
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputName"
+        placeholder="Name"
+        formControlName="name"
+        >
+        <span class="help-block"
+          *ngIf="usersForm.get('name').invalid && usersForm.get('name').touched"
+        >
+        <!-- <span *ngIf="usersForm.get('userName').errors['nameIsForbidden']">This name is already exist!</span> -->
+        <span *ngIf="usersForm.get('name').errors['required']">Name is required.</span>
+        </span>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        placeholder="Email"
+        formControlName="email"
+        >
+        <span class="help-block"
+            *ngIf="usersForm.get('email').invalid && usersForm.get('email').touched"
+          >
+          <!-- <span *ngIf="usersForm.get('email').errors['emailIsForbidden']">This email is already exist!</span> -->
+          <span *ngIf="usersForm.get('email').errors['required']">Email is required.</span>
+          <span *ngIf="usersForm.get('email').errors['email']">Email is invalid.</span>
+        </span>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputContact" class="form-label">Contact</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputContact"
+        placeholder="Contact"
+        formControlName="phone"
+        >
+        <span class="help-block"
+            *ngIf="usersForm.get('phone').invalid && usersForm.get('phone').touched"
+        >
+        <span *ngIf="usersForm.get('phone').errors['required']">Contact is required.</span>
+        </span>
+    </div>
+    <div class="btn-spacing">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="openConfirmationDialog()"
+        [disabled]="!usersForm.valid">{{ editMode ? 'Update' : 'Save'}}
+      </button>
+      <button type="submit" class="btn btn-secondary" (click)="onClear()">Clear</button>
+    </div>
+  </form>
+
+
+
+  <hr>
+    <app-user-list></app-user-list>
+
+
